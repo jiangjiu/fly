@@ -73,12 +73,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-    /******/
-    return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -157,7 +157,8 @@ module.exports = {
 };
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 function KEEP(_,cb){cb();}
@@ -356,7 +357,25 @@ function EngineWrapper(adapter) {
 module.exports = EngineWrapper;
 
 /***/ }),
-/* 2 */
+
+/***/ 15:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//微信小程序入口
+var _Fly = __webpack_require__(2);
+var EngineWrapper = __webpack_require__(1);
+var adapter = __webpack_require__(8);
+var wxEngine = EngineWrapper(adapter);
+module.exports = function (engine) {
+    return new _Fly(engine || wxEngine);
+};
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 function KEEP(_,cb){cb();}
@@ -623,9 +642,9 @@ var Fly = function () {
                             // The xhr of IE9 has not response field
                             var response = engine.response || engine.responseText;
                             if (response && options.parseJson && (engine.getResponseHeader(contentType) || "").indexOf("json") !== -1
-                                // Some third engine implementation may transform the response text to json object automatically,
-                                // so we should test the type of response before transforming it
-                                && !utils.isObject(response)) {
+                            // Some third engine implementation may transform the response text to json object automatically,
+                            // so we should test the type of response before transforming it
+                            && !utils.isObject(response)) {
                                 response = JSON.parse(response);
                             }
 
@@ -643,7 +662,7 @@ var Fly = function () {
                             }
                             var status = engine.status;
                             var statusText = engine.statusText;
-                            var _data = {data: response, headers: headers, status: status, statusText: statusText};
+                            var _data = { data: response, headers: headers, status: status, statusText: statusText };
                             // The _response filed of engine is set in  adapter which be called in engine-wrapper.js
                             utils.merge(_data, engine._response);
                             if (status >= 200 && status < 300 || status === 304) {
@@ -731,21 +750,18 @@ Fly.default = Fly;
         return this.request(url, data, utils.merge({ method: e }, option));
     };
 });
-        ["lock", "unlock", "clear"].forEach(function (e) {
-            Fly.prototype[e] = function () {
-                this.interceptors.request[e]();
-            };
-        });
+["lock", "unlock", "clear"].forEach(function (e) {
+    Fly.prototype[e] = function () {
+        this.interceptors.request[e]();
+    };
+});
 // Learn more about keep-loader: https://github.com/wendux/keep-loader
 ;
 module.exports = Fly;
 
 /***/ }),
-/* 3 */,
-/* 4 */,
-/* 5 */,
-    /* 6 */,
-    /* 7 */
+
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -778,27 +794,7 @@ module.exports = function (request, responseCallback) {
     wx.request(con);
 };
 
-/***/ }),
-/* 8 */,
-/* 9 */,
-/* 10 */,
-    /* 11 */,
-    /* 12 */,
-    /* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-//微信小程序入口
-        var _Fly = __webpack_require__(2);
-var EngineWrapper = __webpack_require__(1);
-        var adapter = __webpack_require__(7);
-var wxEngine = EngineWrapper(adapter);
-module.exports = function (engine) {
-    return new _Fly(engine || wxEngine);
-};
-
 /***/ })
-/******/ ]);
+
+/******/ });
 });

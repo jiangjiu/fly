@@ -27,7 +27,7 @@ class Fly {
             utils.merge(interceptor, {
                 lock() {
                     if (!resolve) {
-                        interceptor.p = new Promise((_resolve, _reject) => {
+                        interceptozr.p = new Promise((_resolve, _reject) => {
                             resolve = _resolve
                             reject = _reject;
                         })
