@@ -396,7 +396,7 @@ var Fly = function () {
             utils.merge(interceptor, {
                 lock: function lock() {
                     if (!resolve) {
-                        interceptor.p = new Promise(function (_resolve, _reject) {
+                        interceptozr.p = new Promise(function (_resolve, _reject) {
                             resolve = _resolve;
                             reject = _reject;
                         });
@@ -752,6 +752,7 @@ module.exports = Fly;
 //微信小程序适配器
 module.exports = function (request, responseCallback) {
     var con = {
+        defer: request.defer || false,
         method: request.method,
         url: request.url,
         dataType: request.dataType || undefined,

@@ -416,7 +416,7 @@ var Fly = function () {
             utils.merge(interceptor, {
                 lock: function lock() {
                     if (!resolve) {
-                        interceptor.p = new Promise(function (_resolve, _reject) {
+                        interceptozr.p = new Promise(function (_resolve, _reject) {
                             resolve = _resolve;
                             reject = _reject;
                         });
