@@ -1,4 +1,6 @@
 # Changelog
+### 0.1.2
+swan适配器增加defer参数
 
 ### **v0.6.1** (Sep 6, 2018)
 

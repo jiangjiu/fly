@@ -1,6 +1,7 @@
 //微信小程序适配器
 module.exports = function (request, responseCallback) {
     let con = {
+        defer: request.defer || false,
         method: request.method,
         url: request.url,
         dataType: request.dataType || undefined,
